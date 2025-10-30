@@ -1,7 +1,8 @@
 <?php
 session_start();
-require 'db.php';
-require 'functions.php';
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/head.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     die("Accès interdit !");
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = getUserById($ticket['user_id']);
 
         // Redirection (PRG)
-        header("Location: dashboard.php?update_success=1");
+        header("Location: /www/dashboard.php?update_success=1");
         exit;
     } catch (PDOException $e) {
         die("Erreur SQL : " . $e->getMessage());
