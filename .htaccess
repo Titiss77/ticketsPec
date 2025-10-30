@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Rediriger tout vers /www/ sauf si déjà dans /www/
+RewriteCond %{REQUEST_URI} !^/www/
+RewriteRule ^(.*)$ /www/$1 [L]
+
+# Définir login.php comme index par défaut
+DirectoryIndex login.php
